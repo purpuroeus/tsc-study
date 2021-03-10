@@ -13,7 +13,13 @@ export class test {
         });
         this.doClient = new this.AWS.DynamoDB.DocumentClient();
     }
-    public query(params : object){
+    public query(TableName : string, KeyCondExp : string, ExpAttrNames : object, ExpAttrVals : object){
+        let params = {
+            TableName : TableName,
+            KeyConditionExpression : KeyCondExp,     // 키를 이용한 검색 조건. #yr이 yyyy와 일치하는 것만 가져옴 + year은 dynamoDB의 예약어 이기 떄문에 충돌을 회피
+            ExpressionAttributeNames : ExpAttrNames,
+            ExpressionAttributeValues : ExpAttrVals
+        }
         console.log('1988년도 개봉 영화 쿼리 요청중...');
         this.doClient.query(params, this.onQuery);
     }

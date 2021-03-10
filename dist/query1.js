@@ -14,7 +14,13 @@ class test {
         });
         this.doClient = new this.AWS.DynamoDB.DocumentClient();
     }
-    query(params) {
+    query(TableName, KeyCondExp, ExpAttrNames, ExpAttrVals) {
+        let params = {
+            TableName: TableName,
+            KeyConditionExpression: KeyCondExp,
+            ExpressionAttributeNames: ExpAttrNames,
+            ExpressionAttributeValues: ExpAttrVals
+        };
         console.log('1988년도 개봉 영화 쿼리 요청중...');
         this.doClient.query(params, this.onQuery);
     }

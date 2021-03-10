@@ -32,4 +32,4 @@ let params = {
         ':yyyy' : 1998
     }
 };
-testclass.query(params);
+testclass.query("Movies", "#yr = :yyyy", {"#yr" : "year"}, {":yyyy" : 1998})
