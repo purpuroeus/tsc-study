@@ -15,14 +15,4 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // app.listen(1000, () => console.log('start'));
 const query1_1 = require("./query1");
 let testclass = new query1_1.test();
-let params = {
-    TableName: 'Movies',
-    KeyConditionExpression: '#yr = :yyyy',
-    ExpressionAttributeNames: {
-        '#yr': 'year'
-    },
-    ExpressionAttributeValues: {
-        ':yyyy': 1998
-    }
-};
 testclass.query("Movies", "#yr = :yyyy", { "#yr": "year" }, { ":yyyy": 1998 });
